@@ -12,27 +12,19 @@
     <meta http-equiv="pragma" content="no-cache" />
 
     <!-- Set the title bar of the page -->
-    <title>BrickMaster</title>
+    <title>Created with GameMaker</title>
 
-    <!-- Set the background color of the document -->
     <style>
         body {
-            background: #0;
-            color: #cccccc;
             margin: 0;
             padding: 0;
-            border: 0;
             overflow: hidden; /* Prevent scrolling */
-            height: 100vh; /* Full viewport height */
-            width: 100vw; /* Full viewport width */
-        }
-
-        #gm4html5_div_id {
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 100%;
-            height: 100%;
+            background: #0;
+            height: 100vh; /* Full viewport height */
+            width: 100vw; /* Full viewport width */
         }
 
         canvas {
@@ -40,29 +32,27 @@
             -webkit-interpolation-mode: nearest-neighbor;
             -ms-touch-action: none;
             touch-action: none;
-            margin: 0;
-            padding: 0;
-            border: 0;
-            width: 100%; /* Make canvas responsive */
-            height: 100%; /* Make canvas responsive */
-            max-height: 100%; /* Prevent overflow */
+            width: 100vw; /* Make canvas responsive */
+            height: 100vh; /* Make canvas responsive */
+            max-height: 100vh; /* Prevent overflow */
+            max-width: 100vw; /* Prevent overflow */
         }
 
-        /* Ensure canvas maintains aspect ratio */
+        /* Maintain aspect ratio */
         @media (min-aspect-ratio: 16/9) {
             canvas {
                 width: auto;
-                height: 100%;
+                height: 100vh;
             }
         }
 
         @media (max-aspect-ratio: 16/9) {
             canvas {
-                width: 100%;
+                width: 100vw;
                 height: auto;
             }
         }
-        
+
         /* Custom Runner Styles */
         div.gm4html5_div_class {
             margin: 0;
@@ -105,7 +95,28 @@
 
     <!-- Run the game code -->
     <script type="text/javascript" src="html5game/platformer.js?cachebust=663496177"></script>
-    <script>window.onload = GameMaker_Init;</script>
+    <script>
+        window.onload = function () {
+            GameMaker_Init();
+            resizeCanvas(); // Call resize function on load
+        };
+
+        // Function to resize canvas
+        function resizeCanvas() {
+            const canvas = document.getElementById('canvas');
+            const ratio = 1366 / 768; // Original aspect ratio
+
+            if (window.innerWidth / window.innerHeight > ratio) {
+                canvas.style.width = `${window.innerHeight * ratio}px`;
+                canvas.style.height = '100vh';
+            } else {
+                canvas.style.height = `${window.innerWidth / ratio}px`;
+                canvas.style.width = '100vw';
+            }
+        }
+
+        window.addEventListener('resize', resizeCanvas); // Adjust on window resize
+    </script>
 </body>
 
 </html>
