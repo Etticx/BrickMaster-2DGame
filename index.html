@@ -1,119 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <!-- Custom PreHead code is injected here -->
-    
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta charset="utf-8" />
 
-    <head>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name ="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-        <meta charset="utf-8"/>
+    <!-- Builtin injector for disabling cache -->
+    <meta http-equiv="pragma" content="no-cache" />
 
-        <!-- Builtin injector for disabling cache -->
-        <meta http-equiv="pragma" content="no-cache"/>
+    <!-- Set the title bar of the page -->
+    <title>BrickMaster/title>
 
-        <!-- Set the title bar of the page -->
-        <title>Created with GameMaker</title>
+    <!-- Set the background color of the document -->
+    <style>
+        body {
+            background: #0;
+            color: #cccccc;
+            margin: 0;
+            padding: 0;
+            border: 0;
+            overflow: hidden; /* Prevent scrolling */
+            height: 100vh; /* Full viewport height */
+            width: 100vw; /* Full viewport width */
+        }
 
-        <!-- Custom PreStyle code is injected here -->
-        
+        #gm4html5_div_id {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+        }
 
-        <!-- Set the background colour of the document -->
-        <style>
-            body {
-                background: #0;
-                color: #cccccc;
-                margin: 0px;
-                padding: 0px;
-                border: 0px;
-            }
+        canvas {
+            image-rendering: optimizeSpeed;
+            -webkit-interpolation-mode: nearest-neighbor;
+            -ms-touch-action: none;
+            touch-action: none;
+            margin: 0;
+            padding: 0;
+            border: 0;
+            width: 100%; /* Make canvas responsive */
+            height: 100%; /* Make canvas responsive */
+            max-height: 100%; /* Prevent overflow */
+        }
 
+        /* Ensure canvas maintains aspect ratio */
+        @media (min-aspect-ratio: 16/9) {
             canvas {
-                image-rendering: optimizeSpeed;
-                -webkit-interpolation-mode: nearest-neighbor;
-                -ms-touch-action: none;
-                touch-action: none;
-                margin: 0px;
-                padding: 0px;
-                border: 0px;
-            }
-            :-webkit-full-screen #canvas {
-                width: 100%;
+                width: auto;
                 height: 100%;
             }
-            :-webkit-full-screen {
+        }
+
+        @media (max-aspect-ratio: 16/9) {
+            canvas {
                 width: 100%;
-                height: 100%;
+                height: auto;
             }
-            
-            /* Custom Runner Styles */
-            div.gm4html5_div_class {
-                margin: 0px;
-                padding: 0px;
-                border: 0px;
-            }
-            div.gm4html5_login {
-                padding: 20px;
-                position: absolute;
-                border: solid 2px #000000;
-                background-color: #404040;
-                color:#00ff00;
-                border-radius: 15px;
-                box-shadow: #101010 20px 20px 40px;
-            }
-            div.gm4html5_cancel_button {
-                float: right;
-            }
-            div.gm4html5_login_button {
-                float: left;
-            }
-            div.gm4html5_login_header {
-                text-align: center;
-            }
-            /* END - Custom Runner Styles */
-            
-        </style>
-
-        <!-- Custom PostStyle code is injected here -->
+        }
         
+        /* Custom Runner Styles */
+        div.gm4html5_div_class {
+            margin: 0;
+            padding: 0;
+            border: 0;
+        }
 
-        <!-- Builtin injector for injecting flurry analytics code -->
-        
-    </head>
+        div.gm4html5_login {
+            padding: 20px;
+            position: absolute;
+            border: solid 2px #000000;
+            background-color: #404040;
+            color: #00ff00;
+            border-radius: 15px;
+            box-shadow: #101010 20px 20px 40px;
+        }
 
-    <!-- Custom PostHead code is injected here -->
-    
+        div.gm4html5_cancel_button {
+            float: right;
+        }
 
-    <!-- Custom PreBody code is injected here -->
-    
+        div.gm4html5_login_button {
+            float: left;
+        }
 
-    <body>
-        <div class="gm4html5_div_class" id="gm4html5_div_id">
-            
-            <!-- Builtin injector for splash screen -->
-            
+        div.gm4html5_login_header {
+            text-align: center;
+        }
+        /* END - Custom Runner Styles */
+    </style>
+</head>
 
-            <!-- Create the canvas element the game draws to -->
-            <canvas id="canvas" width="1366" height="768" >
-                <p>Your browser doesn't support HTML5 canvas.</p>
-            </canvas>
-        </div>
+<body>
+    <div class="gm4html5_div_class" id="gm4html5_div_id">
+        <!-- Create the canvas element the game draws to -->
+        <canvas id="canvas" width="1366" height="768">
+            <p>Your browser doesn't support HTML5 canvas.</p>
+        </canvas>
+    </div>
 
-        <!-- Run the game code -->
-        <script type="text/javascript" src="html5game/platformer.js?cachebust=663496177"></script>
+    <!-- Run the game code -->
+    <script type="text/javascript" src="html5game/platformer.js?cachebust=663496177"></script>
+    <script>window.onload = GameMaker_Init;</script>
+</body>
 
-        <!-- Builtin injector for injecting runner path -->
-        
-
-        <script>window.onload = GameMaker_Init;</script>
-
-        <!-- Builtin injector for injecting google analytics code -->
-        
-
-    </body>
-
-    <!-- Custom PostBody code is injected here -->
-    
 </html>
