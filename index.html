@@ -4,14 +4,13 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta charset="utf-8" />
 
-    <!-- Prevent caching -->
     <meta http-equiv="pragma" content="no-cache" />
 
-    <title>BrickMaster</title>
+    <title>Created with GameMaker</title>
 
     <style>
         body {
@@ -22,26 +21,20 @@
             overflow: hidden; /* Prevent scrollbars */
         }
 
-        canvas {
-            display: block; /* Prevents a gap below the canvas */
-            image-rendering: optimizeSpeed;
-            -webkit-interpolation-mode: nearest-neighbor;
-            -ms-touch-action: none;
-            touch-action: none;
-        }
-
-        /* Make the canvas responsive */
         #canvas {
+            display: block;
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 100vw;  /* Viewport width */
-            height: 100vh; /* Viewport height */
-            object-fit: contain; /* Preserve aspect ratio */
+            width: 100%;
+            height: 100%;
+            max-width: 1366px;
+            max-height: 768px;
+            aspect-ratio: 1366 / 768;
         }
 
-        /* Handle full-screen mode */
+        /* Full-screen styles */
         :-webkit-full-screen #canvas {
             width: 100%;
             height: 100%;
@@ -52,7 +45,6 @@
             height: 100%;
         }
 
-        /* Custom styles for login */
         div.gm4html5_div_class {
             margin: 0;
             padding: 0;
@@ -91,20 +83,30 @@
     </div>
 
     <script type="text/javascript" src="html5game/platformer.js?cachebust=668017276"></script>
+
     <script>
+        function resizeCanvas() {
+            const canvas = document.getElementById('canvas');
+            const aspectRatio = 1366 / 768;  // Aspect ratio of the game
+
+            let windowWidth = window.innerWidth;
+            let windowHeight = window.innerHeight;
+
+            if (windowWidth / windowHeight < aspectRatio) {
+                // Window is narrower, scale based on width
+                canvas.style.width = windowWidth + 'px';
+                canvas.style.height = (windowWidth / aspectRatio) + 'px';
+            } else {
+                // Window is wider, scale based on height
+                canvas.style.width = (windowHeight * aspectRatio) + 'px';
+                canvas.style.height = windowHeight + 'px';
+            }
+        }
+
         window.onload = function () {
             GameMaker_Init();
-
-            // Ensure canvas resizes with the window
-            function resizeCanvas() {
-                const canvas = document.getElementById('canvas');
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
-            }
-
-            // Call the resize function on load and whenever the window is resized
-            resizeCanvas();
-            window.addEventListener('resize', resizeCanvas);
+            resizeCanvas();  // Initial resize
+            window.addEventListener('resize', resizeCanvas);  // Resize on window change
         };
     </script>
 </body>
